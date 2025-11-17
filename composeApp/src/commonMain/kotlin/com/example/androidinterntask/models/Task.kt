@@ -12,7 +12,8 @@ data class Task(
     val text: String? = null,
     val imageUrl: String? = null,
     val imagePath: String? = null,
-    val audioPath: String
+    val audioPath: String? = null,
+    val textDescription: String? = null
 )
 
 enum class TaskType {
@@ -26,10 +27,20 @@ data class Product(
     val id: Int,
     val title: String,
     val description: String,
+    val price: Double,
+    val discountPercentage: Double,
+    val rating: Double,
+    val stock: Int,
+    val brand: String? = null, // Made nullable to handle missing field
+    val category: String,
+    val thumbnail: String,
     val images: List<String>
 )
 
 @Serializable
 data class ProductsResponse(
-    val products: List<Product>
+    val products: List<Product>,
+    val total: Int,
+    val skip: Int,
+    val limit: Int
 )
