@@ -1,5 +1,3 @@
-import org.gradle.kotlin.dsl.implementation
-
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidApplication)
@@ -38,6 +36,7 @@ kotlin {
                 implementation(compose.ui)
                 implementation(compose.components.resources)
                 implementation(compose.components.uiToolingPreview)
+                implementation(compose.materialIconsExtended)
 
                 // Coroutines
                 implementation(libs.kotlinx.coroutines.core)
@@ -52,6 +51,9 @@ kotlin {
 
                 // ViewModel (multiplatform compatible)
                 implementation(libs.androidx.lifecycle.viewmodel)
+
+                // DateTime
+                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
             }
         }
 
@@ -71,6 +73,20 @@ kotlin {
                 // Android-specific lifecycle and navigation
                 implementation(libs.androidx.lifecycle.runtime.compose)
                 implementation(libs.androidx.navigation.compose)
+
+                // --- Added Android-only libraries (from your extra block) ---
+                // Coil for image loading
+                implementation("io.coil-kt:coil-compose:2.5.0")
+
+                // CameraX for camera functionality
+                val cameraxVersion = "1.3.0"
+                implementation("androidx.camera:camera-core:$cameraxVersion")
+                implementation("androidx.camera:camera-camera2:$cameraxVersion")
+                implementation("androidx.camera:camera-lifecycle:$cameraxVersion")
+                implementation("androidx.camera:camera-view:$cameraxVersion")
+
+                // Accompanist permissions (optional, for easier permission handling)
+                implementation("com.google.accompanist:accompanist-permissions:0.32.0")
             }
         }
 
@@ -130,5 +146,6 @@ android {
 }
 
 dependencies {
+    // Keep Compose tooling for debug previews on Android
     debugImplementation(compose.uiTooling)
 }
