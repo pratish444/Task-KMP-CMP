@@ -3,23 +3,40 @@ package com.example.androidinterntask
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.compositionLocalOf
+import androidx.compose.ui.Modifier
+import com.example.androidinterntask.utils.PermissionHandler
 
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        enableEdgeToEdge()
-        super.onCreate(savedInstanceState)
-
-        setContent {
-            App()
-        }
-    }
+// Create a CompositionLocal for MainActivity
+val LocalMainActivity = compositionLocalOf<MainActivity> {
+    error("No MainActivity provided")
 }
 
-@Preview
-@Composable
-fun AppAndroidPreview() {
-    App()
+class MainActivity : ComponentActivity() {
+
+    lateinit var permissionHandler: PermissionHandler
+        private set
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        permissionHandler = PermissionHandler(this)
+
+        setContent {
+            MaterialTheme {
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+                    CompositionLocalProvider(LocalMainActivity provides this) {
+                        App()
+                    }
+                }
+            }
+        }
+    }
 }
