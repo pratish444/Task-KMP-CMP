@@ -116,22 +116,13 @@ com.example.androidinterntask/
 <table>
   <tr>
     <td align="center">
-      <img src="screenshots/recording_progress.png" alt="Recording" width="200"/>
-      <br />
-      <b>Recording Progress</b>
-    </td>
-    <td align="center">
-      <img src="screenshots/recording_complete.png" alt="Complete" width="200"/>
-      <br />
-      <b>Recording Complete</b>
-    </td>
-    <td align="center">
-      <img src="screenshots/task_history.png" alt="History" width="200"/>
+      <img src="screenshots/task_history.png" alt="Task History" width="200"/>
       <br />
       <b>Task History</b>
     </td>
   </tr>
 </table>
+
 
 ## 🚀 Setup Instructions
 
@@ -146,7 +137,7 @@ com.example.androidinterntask/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/YOUR_USERNAME/android-intern-task.git
+   git clone https://github.com/pratish444/Task-KMP-CMP
    cd android-intern-task
    ```
 
@@ -322,32 +313,6 @@ enum class TaskType {
 }
 ```
 
-## 🐛 Known Issues & Limitations
-
-- Audio files are stored in internal storage (not persistent across app reinstalls)
-- Task history is in-memory only (cleared on app restart)
-- Noise test is simulated (not using real microphone input)
-- Single product is fetched (not randomized between tasks)
-
-## 🔮 Future Enhancements
-
-- [ ] Persistent storage (Room/SQLite)
-- [ ] Real noise level detection using microphone
-- [ ] Audio playback functionality
-- [ ] Task export/sharing
-- [ ] Multiple language support
-- [ ] Cloud sync for tasks
-- [ ] Analytics dashboard
-
-## 👨‍💻 Developer
-
-**Your Name**
-- GitHub: [@yourusername](https://github.com/yourusername)
-- Email: your.email@example.com
-
-## 📄 License
-
-This project was created as part of an Android internship task submission.
 
 ## 🙏 Acknowledgments
 
@@ -356,8 +321,3 @@ This project was created as part of an Android internship task submission.
 - Android developer community
 
 ---
-
-**Submission Date**: November 18, 2025  
-**Deadline**: 10:00 AM, November 18, 2025
-
-Made with ❤️ using Kotlin Multiplatform & Compose Multiplatform
